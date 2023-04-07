@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@model List<WebApplication1.Models.CauNoiHay>
+<main>
+  
+
+    <div class="row">
+        <div>Những câu nói hay của thầy Mạc Văn Quang</div>
+        @if (null != Model)
+        {
+            foreach (var index in Model)
+            {
+                 <div class="d-flex flex-row" style="margin:15px">
+                     <div style="color: red; margin-right: 15px">@index.CauNoiHay1</div>
+                     <form method="post" action="/Home/deleteCauNoiHay/@index.id">                     
+                         <button class="btn btn-dark" type="submit">Xóa</button>
+                     </form>
+                 </div>
+            }
+        }
+        <div> Thêm câu nói hay</div>
+        <form method="post" action="/Home/addCauNoiHay">
+            <input type="text" name="cauNoiHay">
+            <button class="btn btn-dark" type="submit">Thêm</button>
+        </form>
+
+    </div>
+</main>
